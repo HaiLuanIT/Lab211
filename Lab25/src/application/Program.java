@@ -34,8 +34,12 @@ public class Program {
                     m.manageProduct();
                     break;
                 }
-                    
+                case 2:{
+                    m.managerWareHouse();
+                    break;
+                }
                 default:
+                    m.managerReport();
                     break;
             }
         }while(choice >= 1 && choice <= 3);

@@ -8,6 +8,8 @@ import business.entity.Product;
 import data.IProductDao;
 import data.ProductDaoImpl;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +25,7 @@ public class ProductService implements IProductService {
             boolean isCheck = rawProduct.add(p);
             if (isCheck) {
                 System.out.println("Add product successfully!");
+                    
             } else {
                 System.out.println("Add failed!");
             }
@@ -58,16 +61,9 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void printList() {
-
-        try {
-            boolean isCheck = rawProduct.printList();
-            if (isCheck) {
-                System.out.println("Print successfully!");
-            } else {
-                System.out.println("List null");
-            }
-        } catch (Exception e) {
+    public void printList() throws Exception {
+        for (Product product : getList()) {
+            System.out.println(product);
         }
     }
 
@@ -80,5 +76,16 @@ public class ProductService implements IProductService {
     public void saveFile() throws Exception {
         rawProduct.saveFile();
     }
-
+    public void removeByQuantity(int quantity){
+        try {
+            boolean isCheck = rawProduct.removeByQuantity(quantity);
+            if (isCheck){
+                System.out.println("Successfull");
+            } else System.out.println("Failed");
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        
+ 
+    }
 }

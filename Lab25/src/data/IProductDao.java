@@ -6,6 +6,8 @@ package data;
 
 import business.entity.Product;
 
+import java.util.List;
+
 /**
  *
  * @author lyhai
@@ -14,8 +16,7 @@ public interface IProductDao extends DAO<Product> {
     boolean add(Product p) throws Exception;
     boolean update(String code, Product newP) throws Exception;
     boolean delete(String code) throws Exception;
-    boolean printList() throws Exception;
-
-
+    List<Product> getList() throws Exception;
     void saveFile() throws Exception;
+    boolean removeByQuantity(int quantity) throws Exception;
 }

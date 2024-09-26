@@ -4,7 +4,9 @@
  */
 package data;
 
+import business.entity.ItemReceipt;
 import business.entity.Product;
+import business.entity.Receipt;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,6 +33,7 @@ public class FileManager implements IManagerFile {
         }
     }
 
+    @Override
     public void writeDataToFile(List<Product> list) throws Exception {
         PrintWriter pw = new PrintWriter(inputFile);
         for (Product e : list) {
@@ -43,5 +46,23 @@ public class FileManager implements IManagerFile {
     public List<String> readDataFromFile() throws Exception {
         return  Files.readAllLines(inputFile.toPath(), StandardCharsets.UTF_8);
     }
+    @Override
+    public void writeReceiptToFile(List<Receipt> list) throws Exception{
+        try (PrintWriter pw = new PrintWriter(inputFile)) {
+            for (Receipt r : list) {
+                pw.println(r);
+            }
+            pw.close();
+        }
+    }
 
+    @Override
+    public void writeItemReceiptToFile(List<ItemReceipt> itemReceiptList) throws FileNotFoundException {
+      try (PrintWriter pw = new PrintWriter(inputFile)) {
+            for (ItemReceipt r : itemReceiptList) {
+                pw.println(r);
+            }
+            pw.close();
+        }
+    }
 }

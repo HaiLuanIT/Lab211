@@ -4,7 +4,9 @@
  */
 package data;
 
+import business.entity.ItemReceipt;
 import business.entity.Product;
+import business.entity.Receipt;
 
 import java.util.List;
 
@@ -16,4 +18,7 @@ public interface IManagerFile {
     List<String> readDataFromFile() throws Exception;
 
     void writeDataToFile(List<Product> list) throws Exception;
+    void writeReceiptToFile(List<Receipt> list) throws Exception;
+
+    public void writeItemReceiptToFile(List<ItemReceipt> itemReceiptList) throws Exception;
 }
